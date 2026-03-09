@@ -25,3 +25,12 @@ def start_reply_admin():
         ],
         resize_keyboard=True
     )
+
+def admin_panel():
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="Mahsulotlar qoshish"),KeyboardButton(text="Mahsulotlarni yangilash")],
+            [KeyboardButton(text="Users"),KeyboardButton(text="Orqaga")]
+        ],
+        resize_keyboard=True
+    )
