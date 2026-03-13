@@ -52,3 +52,17 @@ class Database:
         """
 
         await self.pool.execute(query,role,user_id)
+    
+    #products
+    async def get_products(self):
+        query="""
+        select id,name,price from products order by id;
+        """
+        return await self.pool.fetch(query)
+    
+    async def add_product(self,name,price,description):
+        query="""
+        insert into products(name,price,description) values($1,$2,$3);
+        """
+
+        await self.pool.execute(query,name,price,description)

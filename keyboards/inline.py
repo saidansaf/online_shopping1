@@ -15,3 +15,10 @@ def user_action(user_id):
         ]
     )
 
+def product_inline(products):
+    keyboard=[]
+
+    for product in products:
+        keyboard.append([InlineKeyboardButton(text=f"{product["name"] } ({product["price"]} so'm)",callback_data=f"product_{product["id"]}")])
+    
+    return InlineKeyboardMarkup(inline_keyboard=keyboard)
