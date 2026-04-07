@@ -38,7 +38,13 @@ async def register(msg:Message,state:FSMContext,db):
     await state.update_data(phone_number=msg.text)
     
     data=await state.get_data()
-    await msg.answer(text=f" Malumotlaringiz: \nIsmingiz: {data["name"]}\nFamilyangiz: {data["surename"]}\nYoshingiz: {data["age"]}\nTelefon raqamingiz: {data["phone_number"]}")
+    await msg.answer(
+    text=f"Malumotlaringiz:\n"
+         f"Ismingiz: {data['name']}\n"
+         f"Familyangiz: {data['surename']}\n"
+         f"Yoshingiz: {data['age']}\n"
+         f"Telefon raqamingiz: {data['phone_number']}"
+)
     await db.add_user(int(msg.from_user.id),data["name"],data["surename"],data["age"],data["phone_number"])
     await msg.answer("Malumotlarigiz muvaffaqiyatli saqlandi",reply_markup=start_reply())
     await state.clear()
